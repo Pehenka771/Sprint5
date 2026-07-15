@@ -1,6 +1,10 @@
+package main.test.ru.yandex.practicum.gym;
+
+import main.java.ru.yandex.practicum.gym.*;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -58,7 +62,7 @@ public class TimetableTest {
     @Test
     public void testGetCountByCoachesEmptyTimetable() {
         Timetable timetable = new Timetable();
-        List<Timetable.CoachCount> counts = timetable.getCountByCoaches();
+        Map<Coach, Integer> counts = timetable.getCountByCoaches();
         assertNotNull(counts);
         assertTrue(counts.isEmpty());
     }
@@ -79,11 +83,9 @@ public class TimetableTest {
         timetable.addNewTrainingSession(new TrainingSession(groupChild, coach,
                 DayOfWeek.FRIDAY, new TimeOfDay(10, 0)));
 
-        List<Timetable.CoachCount> counts = timetable.getCountByCoaches();
+        Map<Coach, Integer> counts = timetable.getCountByCoaches();
         assertEquals(1, counts.size());
-
-        Timetable.CoachCount item = counts.getFirst();
-        assertEquals(coach, item.getCoach());
-        assertEquals(3, item.getCount());
+        assertTrue(counts.containsKey(coach));
+        assertEquals(3, counts.get(coach).intValue());
     }
 }

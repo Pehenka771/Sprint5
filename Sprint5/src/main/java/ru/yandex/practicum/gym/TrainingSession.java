@@ -1,3 +1,5 @@
+package main.java.ru.yandex.practicum.gym;
+
 public class TrainingSession {
     private final Group group;
     private final Coach coach;

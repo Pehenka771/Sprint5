@@ -1,3 +1,5 @@
+package main.java.ru.yandex.practicum.gym;
+
 public class Group {
     private final String title;
     private final Age age;
